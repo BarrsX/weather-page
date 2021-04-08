@@ -3,6 +3,7 @@ import './App.css';
 import { Container, Box, Button, TextField, Card, CardContent, Typography, CircularProgress } from '@material-ui/core';
 import "fontsource-roboto";
 import { useState } from 'react';
+import $ from 'jquery';
 
 const cityURL = 'https://corsanywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?query=';
 const woeidURL = 'https://corsanywhere.herokuapp.com/https://www.metaweather.com/api/location/';
@@ -20,6 +21,10 @@ function App() {
   function onType(event) {
     setQuery(event.target.value);
   }
+
+  $('form').keypress(function(e) { 
+    return e.keyCode !== 13;
+  });
 
   function fetchWeatherData() {
     setLoading(true);
@@ -48,11 +53,13 @@ function App() {
     })
   }
 
+
   let output = null;
   if (loading){
     output = <CircularProgress />
   } else if (!loading && weatherData !== null) {
     output = <WeeklyForcast weather={weatherData}/>};
+
   return (
       <Container>
         <Box m={5}>

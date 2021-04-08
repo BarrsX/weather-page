@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import { Container, Box, Button, TextField, Card, CardContent, Typography, CircularProgress } from '@material-ui/core';
 import "fontsource-roboto";
@@ -58,7 +57,7 @@ function App() {
   if (loading){
     output = <CircularProgress />
   } else if (!loading && weatherData !== null) {
-    output = <WeeklyForcast weather={weatherData}/>};
+    output = <WeeklyForecast weather={weatherData}/>};
 
   return (
       <Container>
@@ -77,11 +76,11 @@ function App() {
   );
 }
 
-function WeeklyForcast({ weather }) {
-  return weather.map(day => <DailyForcast weather={day} />)
+function WeeklyForecast({ weather }) {
+  return weather.map(day => <DailyForecast weather={day} />)
 }
 
-function DailyForcast({ weather }) {
+function DailyForecast({ weather }) {
     return (
       <Box display='inline-block' m={1}>
         <Card elevation={5}>
